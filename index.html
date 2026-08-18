@@ -3,247 +3,253 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joshua Brown | Artist Portfolio</title>
+    <title>Joshua Brown | Artist Portfolio (90s GeoCities Edition)</title>
     <style>
-        /* Modern Reset & Fine-Art White Cube Base Styles */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        /* 90s GeoCities / Web-Ring Aesthetic Overrides */
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #ffffff;
-            color: #111111;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
+            background-color: #000066;
+            background-image: url('https://www.webweave.cc/bg/tiles/stars/star12.gif'); /* Classic 90s starfield tile */
+            color: #ffff00;
+            font-family: "Times New Roman", Times, serif;
+            margin: 0;
+            padding: 20px;
         }
-        
-        /* Persistent Grid Layout Framework */
-        .container {
-            display: flex;
-            min-height: 100vh;
+
+        /* 90s Header & Marquee Banner */
+        .marquee-container {
+            background-color: #ff0000;
+            border: 3px inset #ffffff;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 16px;
+            padding: 5px;
+            margin-bottom: 20px;
         }
-        
-        /* Stark Minimal Sidebar Navigation */
+
         header {
-            width: 280px;
-            padding: 60px 40px;
-            position: fixed;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            border-right: 1px solid #f2f2f2;
-            background-color: #ffffff;
-            z-index: 10;
-        }
-        .logo-area h1 {
-            font-size: 19px;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-bottom: 6px;
-        }
-        .logo-area p {
-            font-size: 12px;
-            color: #777777;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        nav {
-            margin-top: 60px;
-        }
-        nav ul {
-            list-style: none;
-        }
-        nav ul li {
-            margin-bottom: 18px;
-        }
-        nav ul li a {
-            text-decoration: none;
-            color: #777777;
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.2s ease;
-            cursor: pointer;
-            font-weight: 400;
-        }
-        nav ul li a:hover, nav ul li a.active {
-            color: #111111;
-            font-weight: 500;
+            text-align: center;
+            border: 4px ridge #00ff00;
+            background-color: #000000;
+            padding: 20px;
+            margin-bottom: 20px;
         }
 
-        .footer-area {
-            font-size: 12px;
-            color: #888888;
+        header h1 {
+            color: #00ffff;
+            font-size: 32px;
+            text-shadow: 3px 3px #ff00ff;
+            margin-bottom: 5px;
+            font-family: "Impact", sans-serif;
+            letter-spacing: 2px;
         }
-        .footer-area a {
-            color: #111111;
+
+        header p {
+            color: #ff00ff;
+            font-size: 14px;
+        }
+
+        /* GeoCities Navigation Bar Table */
+        .geo-nav {
+            background-color: #000080;
+            border: 2px outset #ffffff;
+            padding: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .geo-nav a {
+            color: #00ffff;
+            background-color: #404040;
+            border: 2px outset #ffffff;
+            padding: 4px 12px;
+            margin: 0 5px;
             text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
             display: inline-block;
-            margin-top: 6px;
-            border-bottom: 1px solid #111111;
-            transition: opacity 0.2s ease;
-        }
-        .footer-area a:hover {
-            opacity: 0.6;
+            cursor: pointer;
         }
 
-        /* Responsive Main Display Canvas */
-        main {
-            margin-left: 280px;
-            flex: 1;
-            padding: 60px 80px;
-            width: calc(100% - 280px);
+        .geo-nav a:hover, .geo-nav a.active {
+            background-color: #ffffff;
+            color: #000000;
+            border: 2px inset #ffffff;
         }
+
+        /* Switch back button banner */
+        .switch-banner {
+            background-color: #ffff00;
+            color: #000000;
+            border: 3px outset #ff0000;
+            text-align: center;
+            padding: 8px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .switch-banner a {
+            color: #0000ff;
+            text-decoration: underline;
+            background: none;
+            border: none;
+            padding: 0;
+            font-size: inherit;
+        }
+
+        /* Main Content Container Boxes */
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
         .page-section {
             display: none;
-        }
-        .page-section.active {
-            display: block;
-            animation: fineArtFadeIn 0.4s ease-out forwards;
-        }
-        @keyframes fineArtFadeIn {
-            from { opacity: 0; transform: translateY(6px); }
-            to { opacity: 1; transform: translateY(0); }
+            background-color: #000000;
+            border: 3px ridge #c0c0c0;
+            padding: 20px;
+            margin-bottom: 20px;
         }
 
-        /* Works Grid System */
+        .page-section.active {
+            display: block;
+        }
+
+        /* Retro Works Grid */
         .works-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 48px;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
         }
+
         .work-card {
-            background: #ffffff;
+            background-color: #111111;
+            border: 2px outset #00ff00;
+            padding: 10px;
             cursor: pointer;
         }
+
         .thumbnail-container {
             width: 100%;
             aspect-ratio: 16/9;
-            background-color: #fcfcfc;
+            background-color: #000000;
+            border: 1px inset #ffffff;
             position: relative;
+            margin-bottom: 10px;
             overflow: hidden;
-            margin-bottom: 16px;
-            border: 1px solid #eeeeee;
         }
+
         .thumbnail-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: opacity 0.3s ease;
-        }
-        .work-card:hover .thumbnail-container img {
-            opacity: 0.85;
-        }
-        .codec-tag {
-            position: absolute;
-            bottom: 12px;
-            right: 12px;
-            background: rgba(17, 17, 17, 0.9);
-            color: #ffffff;
-            font-size: 10px;
-            padding: 3px 8px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 500;
-        }
-        .work-info h3 {
-            font-size: 14px;
-            font-weight: 500;
-            margin-bottom: 2px;
-            color: #111111;
-        }
-        .work-info p {
-            font-size: 13px;
-            color: #777777;
         }
 
-        /* Combined About / CV Layout Columns */
+        .codec-tag {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            background: #ff0000;
+            color: #ffffff;
+            font-size: 9px;
+            padding: 2px 4px;
+            border: 1px solid #ffffff;
+            font-family: monospace;
+        }
+
+        .work-info h3 {
+            color: #00ff00;
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+
+        .work-info p {
+            color: #cccccc;
+            font-size: 12px;
+        }
+
+        /* About / CV Layout */
         .about-layout {
             display: flex;
-            gap: 80px;
+            gap: 30px;
         }
+
         .about-left {
             flex: 1.3;
         }
+
         .about-right {
             flex: 1;
-        }
-        .text-block h2 {
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 24px;
-            color: #111111;
-            border-bottom: 1px solid #111111;
-            padding-bottom: 8px;
-        }
-        .text-block p {
-            font-size: 14px;
-            color: #222222;
-            margin-bottom: 22px;
-            text-align: justify;
-        }
-        .cv-section {
-            margin-bottom: 36px;
-        }
-        .cv-section h3 {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 16px;
-            color: #666666;
-        }
-        .cv-item {
-            display: flex;
-            margin-bottom: 14px;
-            font-size: 13px;
-        }
-        .cv-date {
-            width: 100px;
-            color: #888888;
-            flex-shrink: 0;
-        }
-        .cv-detail h4 {
-            font-weight: 500;
-            color: #111111;
-        }
-        .cv-detail p {
-            color: #777777;
-            font-size: 12px;
-            margin-top: 1px;
+            border-left: 2px dashed #00ffff;
+            padding-left: 20px;
         }
 
-        /* Studio Notebook Masonry Stream */
+        h2 {
+            color: #ff00ff;
+            font-size: 16px;
+            border-bottom: 1px solid #ff00ff;
+            padding-bottom: 4px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        p, .cv-detail p, .cv-detail h4 {
+            color: #ffffff;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .cv-section {
+            margin-bottom: 20px;
+        }
+
+        .cv-section h3 {
+            color: #00ffff;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .cv-item {
+            margin-bottom: 10px;
+        }
+
+        .cv-date {
+            color: #ffff00;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        /* Studio Notebook Grid */
         .archive-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 32px;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
         }
+
         .archive-item {
-            background: #ffffff;
+            border: 2px groove #ffffff;
+            padding: 8px;
+            background: #101010;
         }
+
         .archive-thumb {
             width: 100%;
             aspect-ratio: 1/1;
-            background: #fafafa;
-            border: 1px solid #eeeeee;
-            margin-bottom: 10px;
+            border: 1px inset #888888;
+            margin-bottom: 6px;
         }
+
         .archive-thumb img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
+
         .archive-meta {
-            font-size: 12px;
-            color: #777777;
+            color: #00ffff;
+            font-size: 11px;
         }
 
-        /* Elegant Fullscreen View Overlay (Modal) */
+        /* Retro Modal Overlay */
         .modal {
             display: none;
             position: fixed;
@@ -251,411 +257,311 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.99);
+            background: rgba(0, 0, 0, 0.92);
             z-index: 1000;
             overflow-y: auto;
-            padding: 80px 40px;
+            padding: 40px 20px;
         }
+
         .modal.active {
             display: block;
         }
+
         .modal-content {
-            max-width: 960px;
+            max-width: 800px;
             margin: 0 auto;
+            background: #000000;
+            border: 4px ridge #ff00ff;
+            padding: 20px;
             position: relative;
         }
+
         .close-btn {
-            position: fixed;
-            top: 40px;
-            right: 40px;
-            font-size: 24px;
-            background: none;
-            border: none;
-            color: #111111;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ff0000;
+            color: #ffffff;
+            border: 2px outset #ffffff;
+            font-weight: bold;
+            padding: 2px 8px;
             cursor: pointer;
-            line-height: 1;
-            padding: 8px;
-            transition: opacity 0.2s ease;
         }
-        .close-btn:hover {
-            opacity: 0.5;
-        }
+
         .modal-media {
             width: 100%;
             aspect-ratio: 16/9;
-            background: #fcfcfc;
-            margin-bottom: 32px;
-            border: 1px solid #eeeeee;
+            background: #111111;
+            border: 2px inset #ffffff;
+            margin-bottom: 15px;
         }
+
         .modal-media iframe, .modal-media img {
             width: 100%;
             height: 100%;
             border: none;
-            display: block;
-        }
-        .modal-text h2 {
-            font-size: 20px;
-            font-weight: 500;
-            margin-bottom: 6px;
-            letter-spacing: 0.5px;
-        }
-        .modal-meta-info {
-            font-size: 12px;
-            color: #777777;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 24px;
-            border-bottom: 1px solid #eaeaea;
-            padding-bottom: 12px;
-        }
-        .modal-description {
-            font-size: 14px;
-            color: #333333;
-            max-width: 760px;
-            line-height: 1.7;
         }
 
-        /* Fluid Design Overrides for Small Mobile Devices */
-        @media (max-width: 900px) {
-            .container {
-                flex-direction: column;
-            }
-            header {
-                width: 100%;
-                height: auto;
-                position: relative;
-                padding: 40px 24px 24px 24px;
-                border-right: none;
-                border-bottom: 1px solid #eeeeee;
-            }
-            nav {
-                margin-top: 24px;
-            }
-            nav ul {
-                display: flex;
-                gap: 24px;
-                flex-wrap: wrap;
-            }
-            nav ul li {
-                margin-bottom: 0;
-            }
-            main {
-                margin-left: 0;
-                width: 100%;
-                padding: 40px 24px;
-            }
+        .modal-text h2 {
+            color: #00ffff;
+            font-size: 18px;
+        }
+
+        .modal-meta-info {
+            color: #ffff00;
+            font-size: 11px;
+            margin-bottom: 10px;
+            font-family: monospace;
+        }
+
+        .modal-description {
+            color: #ffffff;
+            font-size: 13px;
+        }
+
+        /* Hit Counter Footer */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            border-top: 1px dashed #ffffff;
+            padding-top: 20px;
+        }
+
+        .hit-counter {
+            background-color: #000000;
+            border: 2px inset #ffffff;
+            color: #00ff00;
+            font-family: "Courier New", monospace;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 4px 10px;
+            display: inline-block;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            color: #aaaaaa;
+            font-size: 11px;
+        }
+
+        footer a {
+            color: #00ffff;
+        }
+
+        @media (max-width: 800px) {
             .about-layout {
                 flex-direction: column;
-                gap: 48px;
             }
-            .close-btn {
-                top: 20px;
-                right: 20px;
-                font-size: 32px;
+            .about-right {
+                border-left: none;
+                border-top: 2px dashed #00ffff;
+                padding-left: 0;
+                padding-top: 20px;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- Persistent Visual Sidebar Navigation Header -->
-        <header>
-            <div class="logo-area">
-                <h1>Joshua Brown</h1>
-                <p>AV.H.264 / Multimedia Artist</p>
-            </div>
-            
-            <nav>
-                <ul>
-                    <li><a class="nav-link active" onclick="switchTab(event, 'works')">Selected Works</a></li>
-                    <li><a class="nav-link" onclick="switchTab(event, 'about')">About & CV</a></li>
-                    <li><a class="nav-link" onclick="switchTab(event, 'archive')">Studio Notebook</a></li>
-                </ul>
-            </nav>
-            
-            <div class="footer-area">
-                <p>&copy; 2026 Joshua Brown</p>
-                <a href="https://www.instagram.com/av.h.264/" target="_blank" rel="noopener">@av.h.264</a>
-            </div>
-        </header>
-
-        <!-- Main Display Panel Container -->
-        <main>
-            
-            <!-- VIEW BLOCK 1: SELECTED WORKS CORE CANVAS -->
-            <section id="works" class="page-section active">
-                <div class="works-grid">
-                    
-                    <!-- Showcase Item 1 (Moving Image Platform Placeholder) -->
-                    <div class="work-card" onclick="openProject('project1')">
-                        <div class="thumbnail-container">
-                            <img src="https://placehold.co/600x338/f7f7f7/888888?text=Spatial+Translation+Loop" alt="Spatial Translation Video Loop Still">
-                            <div class="codec-tag">Video / Loop</div>
-                        </div>
-                        <div class="work-info">
-                            <h3>Spatial Translation I</h3>
-                            <p>Video Loop, Cast Resin, Spatial Sound Rig (2025)</p>
-                        </div>
-                    </div>
-
-                    <!-- Showcase Item 2 (Heavy Sculpture Entry Placeholder) -->
-                    <div class="work-card" onclick="openProject('project2')">
-                        <div class="thumbnail-container">
-                            <img src="https://placehold.co/600x338/f7f7f7/888888?text=Structural+Friction+Installation" alt="Structural Friction Sculpture Still">
-                            <div class="codec-tag">Installation</div>
-                        </div>
-                        <div class="work-info">
-                            <h3>Structural Friction</h3>
-                            <p>Cast Iron, Weathered Timber, Architectural Frame (2025)</p>
-                        </div>
-                    </div>
-
-                    <!-- Showcase Item 3 (Time-Based Codec Fragment Placeholder) -->
-                    <div class="work-card" onclick="openProject('project3')">
-                        <div class="thumbnail-container">
-                            <img src="https://placehold.co/600x338/f7f7f7/888888?text=Compression+Artifacts+Render" alt="Compression Artifacts Screen Output Still">
-                            <div class="codec-tag">Moving Image</div>
-                        </div>
-                        <div class="work-info">
-                            <h3>Compression Artifacts & The Grid</h3>
-                            <p>Single Channel HD Video, H.264 Codec, 11'45" (2024)</p>
-                        </div>
-                    </div>
-                    
-                </div>
-            </section>
-
-            <!-- VIEW BLOCK 2: BIOGRAPHY & CURRICULUM VITAE -->
-            <section id="about" class="page-section">
-                <div class="about-layout">
-                    
-                    <!-- Conceptual Writing Framework Block -->
-                    <div class="about-left text-block">
-                        <h2>Artist Biography</h2>
-                        <p>Joshua Brown makes audio visual work, sculptural objects and sometimes combines the two. Themes that recur in his work are sustainability, memory, and deterioration. The construction of his sculptural pieces is carefully considered, with reuse and recyclability being important factors in his choice of materials. Joshua’s audio-visual work is influenced by sample culture. He is currently based in County Clare, Ireland and London, pursuing his MA in Sculpture at the Royal College of Art, Battersea.</p>
-
-                        <h2 style="margin-top: 44px;">Artist Statement</h2>
-                        <p>My practice considers multimedia art an act of spatial and temporal translation. Blending heavy physical media—such as cast metals, stone, and industrial timber—with time-based digital formats, I examine how physical boundaries and digital codecs dictate human perception. The handle av.h.264 serves as a conceptual nod to this framework: a recognition of how raw, monumental physical reality becomes compressed, formatted, and transmitted through digital channels.</p>
-                        <p>Central to my work is the loop—both as a physical structural motif and a temporal cinematic device. I investigate the friction that occurs when permanent, unyielding industrial materials are paired with the transient, fleeting nature of moving images or soundscapes.</p>
-                    </div>
-                    
-                    <!-- Professional Academic History Column -->
-                    <div class="about-right">
-                        <div class="text-block">
-                            <h2>Curriculum Vitae</h2>
-                        </div>
-                        
-                        <div class="cv-section">
-                            <h3>Education</h3>
-                            <div class="cv-item">
-                                <div class="cv-date">2025–2026</div>
-                                <div class="cv-detail">
-                                    <h4>MA Sculpture</h4>
-                                    <p>Royal College of Art, Battersea, London</p>
-                                </div>
-                            </div>
-                            <div class="cv-item">
-                                <div class="cv-date">2021–2025</div>
-                                <div class="cv-detail">
-                                    <h4>B.A. Sculpture and Combined Media</h4>
-                                    <p>Limerick School of Art and Design, Limerick</p>
-                                </div>
-                            </div>
-                            <div class="cv-item">
-                                <div class="cv-date">2014–2015</div>
-                                <div class="cv-detail">
-                                    <h4>ME Mechanical Engineering</h4>
-                                    <p>NUIG Galway</p>
-                                </div>
-                            </div>
-                            <div class="cv-item">
-                                <div class="cv-date">2009–2014</div>
-                                <div class="cv-detail">
-                                    <h4>B.Eng. Energy Engineering</h4>
-                                    <p>GMIT Galway</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="cv-section">
-                            <h3>Expertise</h3>
-                            <div class="cv-item">
-                                <div class="cv-date">Skills</div>
-                                <div class="cv-detail">
-                                    <p>Sculpture, Audio Visual Production, Sound Design / Music Composition, Photography</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="cv-section">
-                            <h3>Selected Exhibitions</h3>
-                            <div class="cv-item">
-                                <div class="cv-date">2026</div>
-                                <div class="cv-detail">
-                                    <h4>A system at scale</h4>
-                                    <p>Three Rooms Gallery, 74 Beulah Rd, London E17 9LE (May 13, 2026)</p>
-                                </div>
-                            </div>
-                            <div class="cv-item">
-                                <div class="cv-date">2026</div>
-                                <div class="cv-detail">
-                                    <h4>“Systems in Process”</h4>
-                                    <p>Noho Showrooms (14–18 April 2026)</p>
-                                </div>
-                            </div>
-                            <div class="cv-item">
-                                <div class="cv-date">2026</div>
-                                <div class="cv-detail">
-                                    <h4>Apocalypse, and After?</h4>
-                                    <p>Hockney Gallery, Kensington (17–20 March 2026)</p>
-                                </div>
-                            </div>
-                            <div class="cv-item">
-                                <div class="cv-date">2024</div>
-                                <div class="cv-detail">
-                                    <h4>Kwaidan – Encounters with Lafcadio Hearn</h4>
-                                    <p>3 December – 22 February</p>
-                                </div>
-                            </div>
-                            <div class="cv-item">
-                                <div class="cv-date">2024</div>
-                                <div class="cv-detail">
-                                    <h4>The Limerick Show</h4>
-                                    <p>29 November – 1 February</p>
-                                </div>
-                            </div>
-                            <div class="cv-item">
-                                <div class="cv-date">2024</div>
-                                <div class="cv-detail">
-                                    <h4>Clifden Arts Festival Arts Trail</h4>
-                                    <p>18-29 September</p>
-                                </div>
-                            </div>
-                            <div class="cv-item">
-                                <div class="cv-date">2024</div>
-                                <div class="cv-detail">
-                                    <h4>Sonic Sculptures 3: Playground of Sound</h4>
-                                    <p>14 September</p>
-                                </div>
-                            </div>
-                            <div class="cv-item">
-                                <div class="cv-date">2023</div>
-                                <div class="cv-detail">
-                                    <h4>FUBAR Glitch Art Festival</h4>
-                                    <p>07 October - December</p>
-                                </div>
-                            </div>
-                            <div class="cv-item">
-                                <div class="cv-date">2023</div>
-                                <div class="cv-detail">
-                                    <h4>Full Circle – Hunt Museum</h4>
-                                    <p>17 March</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="cv-section">
-                            <h3>Publications</h3>
-                            <div class="cv-item">
-                                <div class="cv-date">Oct 2024</div>
-                                <div class="cv-detail">
-                                    <h4>Myth & Lore</h4>
-                                    <p>Illustration</p>
-                                </div>
-                            </div>
-                            <div class="cv-item">
-                                <div class="cv-date">Sep 2023</div>
-                                <div class="cv-detail">
-                                    <h4>Acres Farmland Plant Identification Key</h4>
-                                    <p>Illustrations</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-            </section>
-
-            <!-- VIEW BLOCK 3: INFORMAL STUDIO NOTEBOOK STREAM -->
-            <section id="archive" class="page-section">
-                <div class="archive-grid">
-                    
-                    <div class="archive-item">
-                        <div class="archive-thumb">
-                            <img src="https://placehold.co/300x300/fcfcfc/aaaaaa?text=Render+Artifact+Test" alt="Studio test render fragment">
-                        </div>
-                        <div class="archive-meta">Notebook #012 — Render Artifact Test (August 2026)</div>
-                    </div>
-
-                    <div class="archive-item">
-                        <div class="archive-thumb">
-                            <img src="https://placehold.co/300x300/fcfcfc/aaaaaa?text=Maquette+Structural+Sketch" alt="Maquette geometry design drawing">
-                        </div>
-                        <div class="archive-meta">Notebook #011 — Miniature Spatial Layout drawing</div>
-                    </div>
-
-                    <div class="archive-item">
-                        <div class="archive-thumb">
-                            <img src="https://placehold.co/300x300/fcfcfc/aaaaaa?text=Plaster+Mold+Restriction" alt="Plaster mold setting test">
-                        </div>
-                        <div class="archive-meta">Notebook #010 — Plaster cast restriction test</div>
-                    </div>
-
-                    <div class="archive-item">
-                        <div class="archive-thumb">
-                            <img src="https://placehold.co/300x300/fcfcfc/aaaaaa?text=Audio+Frequency+Wave" alt="Audio loop wavelength screenshot">
-                        </div>
-                        <div class="archive-meta">Notebook #009 — Ambient hum audio frequency breakdown</div>
-                    </div>
-                    
-                </div>
-            </section>
-
-        </main>
+    <!-- 90s Marquee Top Banner -->
+    <div class="marquee-container">
+        <marquee scrollamount="4">*** WELCOME TO JOSHUA BROWN'S CYBERSPACE DOMAIN &bull; MULTIMEDIA ART, SCULPTURE & SAMPLE CULTURE &bull; SIGN THE GUESTBOOK! ***</marquee>
     </div>
 
-    <!-- PERSISTENT EXPANDED OVERLAY PANEL (MODAL WINDOW) -->
-    <div id="projectModal" class="modal">
-        <button class="close-btn" onclick="closeProject()">&times;</button>
-        <div class="modal-content">
-            <div id="modalMediaContainer" class="modal-media">
-                <!-- Data injection point for video embeds or deep detail photo lists -->
-            </div>
+    <!-- Toggle / Switch Banner to jump back to modern site -->
+    <div class="switch-banner">
+        ⚡ YOU ARE VIEWING THE 1996 GEO-CITIES MIRROR SITE! <a href="#" onclick="toggleModernMode(event)">[ CLICK HERE TO RETURN TO THE MODERN WHITE CUBE PORTFOLIO ]</a> ⚡
+    </div>
 
+    <!-- Retro Header & Title Area -->
+    <header>
+        <h1>Joshua Brown</h1>
+        <p>::: AV.H.264 / Multimedia Artist & Sculptor :::</p>
+    </header>
+
+    <!-- GeoCities Style Navigation Table -->
+    <div class="geo-nav">
+        <a class="nav-link active" onclick="switchTab(event, 'works')">[ Selected Works ]</a>
+        <a class="nav-link" onclick="switchTab(event, 'about')">[ About & CV ]</a>
+        <a class="nav-link" onclick="switchTab(event, 'archive')">[ Studio Notebook ]</a>
+    </div>
+
+    <main>
+        
+        <!-- SECTION 1: WORKS -->
+        <section id="works" class="page-section active">
+            <h2 style="text-align:center; margin-bottom:20px;">~ FEATURED MULTIMEDIA FILES ~</h2>
+            <div class="works-grid">
+                
+                <div class="work-card" onclick="openProject('project1')">
+                    <div class="thumbnail-container">
+                        <img src="https://placehold.co/600x338/000000/00ff00?text=Spatial+Translation+Loop" alt="Spatial Translation Video Loop Still">
+                        <div class="codec-tag">MPG / LOOP</div>
+                    </div>
+                    <div class="work-info">
+                        <h3>Spatial Translation I</h3>
+                        <p>Video Loop, Cast Resin, Spatial Sound Rig (2025)</p>
+                    </div>
+                </div>
+
+                <div class="work-card" onclick="openProject('project2')">
+                    <div class="thumbnail-container">
+                        <img src="https://placehold.co/600x338/000000/00ff00?text=Structural+Friction" alt="Structural Friction Sculpture Still">
+                        <div class="codec-tag">SCULPTURE</div>
+                    </div>
+                    <div class="work-info">
+                        <h3>Structural Friction</h3>
+                        <p>Cast Iron, Weathered Timber, Architectural Frame (2025)</p>
+                    </div>
+                </div>
+
+                <div class="work-card" onclick="openProject('project3')">
+                    <div class="thumbnail-container">
+                        <img src="https://placehold.co/600x338/000000/00ff00?text=Compression+Artifacts" alt="Compression Artifacts Screen Output Still">
+                        <div class="codec-tag">H.264 CODEC</div>
+                    </div>
+                    <div class="work-info">
+                        <h3>Compression Artifacts & The Grid</h3>
+                        <p>Single Channel HD Video, H.264 Codec, 11'45" (2024)</p>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- SECTION 2: ABOUT & CV -->
+        <section id="about" class="page-section">
+            <div class="about-layout">
+                
+                <div class="about-left">
+                    <h2>Artist Biography</h2>
+                    <p>Joshua Brown makes audio visual work, sculptural objects and sometimes combines the two. Themes that recur in his work are sustainability, memory, and deterioration. The construction of his sculptural pieces is carefully considered, with reuse and recyclability being important factors in his choice of materials. Joshua’s audio-visual work is influenced by sample culture. He is currently based in County Clare, Ireland and London, pursuing his MA in Sculpture at the Royal College of Art, Battersea.</p>
+
+                    <h2 style="margin-top: 30px;">Artist Statement</h2>
+                    <p>My practice considers multimedia art an act of spatial and temporal translation. Blending heavy physical media—such as cast metals, stone, and industrial timber—with time-based digital formats, I examine how physical boundaries and digital codecs dictate human perception. The handle av.h.264 serves as a conceptual nod to this framework.</p>
+                </div>
+                
+                <div class="about-right">
+                    <h2>Curriculum Vitae</h2>
+                    
+                    <div class="cv-section">
+                        <h3>Education</h3>
+                        <div class="cv-item">
+                            <div class="cv-date">2025–2026</div>
+                            <div class="cv-detail">
+                                <h4>MA Sculpture</h4>
+                                <p>Royal College of Art, Battersea, London</p>
+                            </div>
+                        </div>
+                        <div class="cv-item">
+                            <div class="cv-date">2021–2025</div>
+                            <div class="cv-detail">
+                                <h4>B.A. Sculpture & Combined Media</h4>
+                                <p>Limerick School of Art and Design, Limerick</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cv-section">
+                        <h3>Selected Exhibitions (2026)</h3>
+                        <div class="cv-item">
+                            <div class="cv-date">May 13, 2026</div>
+                            <div class="cv-detail">
+                                <h4>A system at scale</h4>
+                                <p>Three Rooms Gallery, London E17 9LE</p>
+                            </div>
+                        </div>
+                        <div class="cv-item">
+                            <div class="cv-date">14–18 April 2026</div>
+                            <div class="cv-detail">
+                                <h4>“Systems in Process”</h4>
+                                <p>Noho Showrooms</p>
+                            </div>
+                        </div>
+                        <div class="cv-item">
+                            <div class="cv-date">17–20 March 2026</div>
+                            <div class="cv-detail">
+                                <h4>Apocalypse, and After?</h4>
+                                <p>Hockney Gallery, Kensington</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- SECTION 3: STUDIO NOTEBOOK -->
+        <section id="archive" class="page-section">
+            <h2 style="text-align:center; margin-bottom:20px;">~ STUDIO DISK DIRECTORY ~</h2>
+            <div class="archive-grid">
+                
+                <div class="archive-item">
+                    <div class="archive-thumb">
+                        <img src="https://placehold.co/300x300/000000/00ffff?text=Artifact+Test" alt="Studio test render fragment">
+                    </div>
+                    <div class="archive-meta">#012 — Render Test (Aug 2026)</div>
+                </div>
+
+                <div class="archive-item">
+                    <div class="archive-thumb">
+                        <img src="https://placehold.co/300x300/000000/00ffff?text=Sketch.bmp" alt="Maquette geometry design drawing">
+                    </div>
+                    <div class="archive-meta">#011 — Spatial Layout Sketch</div>
+                </div>
+
+                <div class="archive-item">
+                    <div class="archive-thumb">
+                        <img src="https://placehold.co/300x300/000000/00ffff?text=Plaster.jpg" alt="Plaster mold setting test">
+                    </div>
+                    <div class="archive-meta">#010 — Plaster Cast Test</div>
+                </div>
+
+                <div class="archive-item">
+                    <div class="archive-thumb">
+                        <img src="https://placehold.co/300x300/000000/00ffff?text=Waveform.wav" alt="Audio loop wavelength screenshot">
+                    </div>
+                    <div class="archive-meta">#009 — Frequency Breakdown</div>
+                </div>
+                
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Retro Modal Viewer -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeProject()">[X]</button>
+            <div id="modalMediaContainer" class="modal-media"></div>
             <div class="modal-text">
                 <h2 id="modalTitle">Project Title</h2>
-                <div id="modalMeta" class="modal-meta-info">Medium, Dimensions, Year</div>
-                <div id="modalDesc" class="modal-description">
-                    Project descriptive text text holder.
-                </div>
+                <div id="modalMeta" class="modal-meta-info">Medium / Dimensions / Year</div>
+                <div id="modalDesc" class="modal-description">Description text here</div>
             </div>
         </div>
     </div>
 
-    <!-- Client-Side Navigation Tabs & Dynamic Data Injection Logic -->
+    <!-- Hit Counter & Web Ring Footer -->
+    <footer>
+        <div class="hit-counter">00048291</div>
+        <p>Visitors since March 1996 &bull; Best viewed in Netscape Navigator 3.0 or Microsoft Internet Explorer 3.0</p>
+        <p style="margin-top: 6px;"><a href="https://www.instagram.com/av.h.264/" target="_blank">[ Instagram @av.h.264 ]</a></p>
+    </footer>
+
+    <!-- Interactive Logic Scripts -->
     <script>
-        // Single-Page Routing System
         function switchTab(event, tabId) {
-            // Hide all structural tabs
-            const sections = document.querySelectorAll('.page-section');
-            sections.forEach(sec => sec.classList.remove('active'));
+            document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
+            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
             
-            // Unhighlight navigation nodes
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => link.classList.remove('active'));
-            
-            // Display active pane target
             document.getElementById(tabId).classList.add('active');
-            
-            // Mark indicator active
             event.target.classList.add('active');
-            
-            // Return screen safely to top anchor
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Project Archive Cache Structure
+        // Project Archive Data Cache
         const projectData = {
             project1: {
                 title: "Spatial Translation I",
@@ -666,18 +572,17 @@
             project2: {
                 title: "Structural Friction",
                 meta: "Cast Iron, Weathered Structural Timber, Architectural Clamps / 240cm x 110cm x 90cm / 2025",
-                desc: "<p>This entry documents fine-art object documentation incorporating reused and recyclable materials, focusing on structural tension and physical durability.</p>",
-                media: '<img src="https://placehold.co/950x534/e8e8e8/555555?text=Physical+Installation+Detail+High-Res+Photo" alt="Sculpture documentation view">'
+                desc: "<p>Fine-art object documentation incorporating reused and recyclable materials, focusing on structural tension and physical durability.</p>",
+                media: '<img src="https://placehold.co/950x534/000000/00ff00?text=Physical+Installation+Detail" alt="Sculpture documentation view">'
             },
             project3: {
                 title: "Compression Artifacts & The Grid",
                 meta: "Single Channel Ultra-HD Video, H.264 Codec, Stereo Audio / 11 Minutes 45 Seconds / 2024",
                 desc: "<p>An audio-visual research exploration tracking code breakdown loops, sample culture influences, and pixel degradation.</p>",
-                media: '<img src="https://placehold.co/950x534/e8e8e8/555555?text=Time-Based+Media+Playback+Monitor" alt="Screening window video render">'
+                media: '<img src="https://placehold.co/950x534/000000/00ff00?text=Time-Based+Media+Monitor" alt="Screening window video render">'
             }
         };
 
-        // Open Detailed Workspace Overlay View
         function openProject(id) {
             const data = projectData[id];
             if (!data) return;
@@ -688,14 +593,20 @@
             document.getElementById('modalMediaContainer').innerHTML = data.media;
             
             document.getElementById('projectModal').classList.add('active');
-            document.body.style.overflow = 'hidden'; // Stop window drift
+            document.body.style.overflow = 'hidden';
         }
 
-        // Close Workspace Overlay View
         function closeProject() {
             document.getElementById('projectModal').classList.remove('active');
-            document.getElementById('modalMediaContainer').innerHTML = ''; // Wipe video stream buffers instantly
-            document.body.style.overflow = 'auto'; // Re-enable screen wheel tracking
+            document.getElementById('modalMediaContainer').innerHTML = '';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Toggle back to modern version (or reload original page)
+        function toggleModernMode(e) {
+            e.preventDefault();
+            alert("Switching back to the fine-art white cube minimalist portfolio!");
+            location.reload(); // If saved as a separate file, change this to point to your main portfolio HTML file e.g., location.href = 'index.html';
         }
     </script>
 </body>
