@@ -1,0 +1,665 @@
+# Minimalist Multimedia Portfolio Website
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AV.H.264 | Multimedia Artist Portfolio</title>
+    <style>
+        /* Modern Reset & Fine-Art White Cube Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #ffffff;
+            color: #111111;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+
+        }
+        
+        /* Persistent Grid Layout Framework */
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        /* Stark Minimal Sidebar Navigation */
+        header {
+            width: 280px;
+            padding: 60px 40px;
+            position: fixed;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-right: 1px solid #f2f2f2;
+            background-color: #ffffff;
+
+            z-index: 10;
+        }
+        .logo-area h1 {
+            font-size: 19px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+        .logo-area p {
+            font-size: 12px;
+            color: #777777;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        nav {
+            margin-top: 60px;
+        }
+        nav ul {
+
+            list-style: none;
+        }
+        nav ul li {
+            margin-bottom: 18px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #777777;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.2s ease;
+            cursor: pointer;
+            font-weight: 400;
+        }
+        nav ul li a:hover, nav ul li a.active {
+            color: #111111;
+            font-weight: 500;
+        }
+
+        .footer-area {
+            font-size: 12px;
+            color: #888888;
+        }
+        .footer-area a {
+            color: #111111;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 6px;
+            border-bottom: 1px solid #111111;
+            transition: opacity 0.2s ease;
+        }
+        .footer-area a:hover {
+            opacity: 0.6;
+        }
+
+        /* Responsive Main Display Canvas */
+        main {
+            margin-left: 280px;
+
+            flex: 1;
+            padding: 60px 80px;
+            width: calc(100% - 280px);
+        }
+        .page-section {
+            display: none;
+        }
+        .page-section.active {
+            display: block;
+            animation: fineArtFadeIn 0.4s ease-out forwards;
+        }
+        @keyframes fineArtFadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Works Grid System */
+        .works-grid {
+            display: grid;
+
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 48px;
+        }
+        .work-card {
+            background: #ffffff;
+            cursor: pointer;
+        }
+        .thumbnail-container {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background-color: #fcfcfc;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 16px;
+            border: 1px solid #eeeeee;
+        }
+        .thumbnail-container img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+            transition: opacity 0.3s ease;
+        }
+        .work-card:hover .thumbnail-container img {
+            opacity: 0.85;
+        }
+        .codec-tag {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            background: rgba(17, 17, 17, 0.9);
+            color: #ffffff;
+            font-size: 10px;
+            padding: 3px 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+        .work-info h3 {
+
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 2px;
+            color: #111111;
+        }
+        .work-info p {
+            font-size: 13px;
+            color: #777777;
+        }
+
+        /* Combined About / CV Layout Columns */
+        .about-layout {
+            display: flex;
+            gap: 80px;
+        }
+        .about-left {
+            flex: 1.3;
+        }
+        .about-right {
+
+            flex: 1;
+        }
+        .text-block h2 {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 24px;
+            color: #111111;
+            border-bottom: 1px solid #111111;
+            padding-bottom: 8px;
+        }
+        .text-block p {
+            font-size: 14px;
+            color: #222222;
+            margin-bottom: 22px;
+            text-align: justify;
+        }
+        .cv-section {
+            margin-bottom: 36px;
+
+        }
+        .cv-section h3 {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            color: #666666;
+        }
+        .cv-item {
+            display: flex;
+            margin-bottom: 14px;
+            font-size: 13px;
+        }
+        .cv-date {
+            width: 90px;
+            color: #888888;
+            flex-shrink: 0;
+        }
+        .cv-detail h4 {
+
+            font-weight: 500;
+            color: #111111;
+        }
+        .cv-detail p {
+            color: #777777;
+            font-size: 12px;
+            margin-top: 1px;
+        }
+
+        /* Studio Notebook Masonry Stream */
+        .archive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 32px;
+        }
+        .archive-item {
+            background: #ffffff;
+        }
+        .archive-thumb {
+
+            width: 100%;
+            aspect-ratio: 1/1;
+            background: #fafafa;
+            border: 1px solid #eeeeee;
+            margin-bottom: 10px;
+        }
+        .archive-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .archive-meta {
+            font-size: 12px;
+            color: #777777;
+        }
+
+        /* Elegant Fullscreen View Overlay (Modal) */
+        .modal {
+            display: none;
+
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.99);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 80px 40px;
+        }
+        .modal.active {
+            display: block;
+        }
+        .modal-content {
+            max-width: 960px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .close-btn {
+
+            position: fixed;
+            top: 40px;
+            right: 40px;
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: #111111;
+            cursor: pointer;
+            line-height: 1;
+            padding: 8px;
+            transition: opacity 0.2s ease;
+        }
+        .close-btn:hover {
+            opacity: 0.5;
+        }
+        .modal-media {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #fcfcfc;
+
+            margin-bottom: 32px;
+            border: 1px solid #eeeeee;
+        }
+        .modal-media iframe, .modal-media img {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+        .modal-text h2 {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
+        }
+        .modal-meta-info {
+            font-size: 12px;
+            color: #777777;
+            text-transform: uppercase;
+
+            letter-spacing: 0.5px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid #eaeaea;
+            padding-bottom: 12px;
+        }
+        .modal-description {
+            font-size: 14px;
+            color: #333333;
+            max-width: 760px;
+            line-height: 1.7;
+        }
+
+        /* Fluid Design Overrides for Small Mobile Devices */
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+            }
+            header {
+                width: 100%;
+
+                height: auto;
+                position: relative;
+                padding: 40px 24px 24px 24px;
+                border-right: none;
+                border-bottom: 1px solid #eeeeeef;
+            }
+            nav {
+                margin-top: 24px;
+            }
+            nav ul {
+                display: flex;
+                gap: 24px;
+                flex-wrap: wrap;
+            }
+            nav ul li {
+                margin-bottom: 0;
+            }
+            main {
+                margin-left: 0;
+
+                width: 100%;
+                padding: 40px 24px;
+            }
+            .about-layout {
+                flex-direction: column;
+                gap: 48px;
+            }
+            .close-btn {
+                top: 20px;
+                right: 20px;
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Persistent Visual Sidebar Navigation Header -->
+
+        <header>
+            <div class="logo-area">
+                <h1>AV.H.264</h1>
+                <p>Multimedia Artist</p>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a class="nav-link active" onclick="switchTab(event, 'works')">Selected Works</a></li>
+                    <li><a class="nav-link" onclick="switchTab(event, 'about')">About & CV</a></li>
+                    <li><a class="nav-link" onclick="switchTab(event, 'archive')">Studio Notebook</a></li>
+                </ul>
+            </nav>
+            
+            <div class="footer-area">
+                <p>&copy; 2026 AV.H.264</p>
+                <a href="https://instagram.com" target="_blank" rel="noopener">@av.h.264</a>
+            </div>
+        </header>
+
+
+        <!-- Main Display Panel Container -->
+        <main>
+            
+            <!-- VIEW BLOCK 1: SELECTED WORKS CORE CANVAS -->
+            <section id="works" class="page-section active">
+                <div class="works-grid">
+                    
+                    <!-- Showcase Item 1 (Moving Image Platform Placeholder) -->
+                    <div class="work-card" onclick="openProject('project1')">
+                        <div class="thumbnail-container">
+                            <img src="https://placehold.co/600x338/f7f7f7/888888?text=Spatial+Translation+Loop" alt="Spatial Translation Video Loop Still">
+                            <div class="codec-tag">Video / Loop</div>
+                        </div>
+                        <div class="work-info">
+                            <h3>Spatial Translation I</h3>
+                            <p>Video Loop, Cast Resin, Spatial Sound Rig (2025)</p>
+                        </div>
+                    </div>
+
+
+                    <!-- Showcase Item 2 (Heavy Sculpture Entry Placeholder) -->
+                    <div class="work-card" onclick="openProject('project2')">
+                        <div class="thumbnail-container">
+                            <img src="https://placehold.co/600x338/f7f7f7/888888?text=Structural+Friction+Installation" alt="Structural Friction Sculpture Still">
+                            <div class="codec-tag">Installation</div>
+                        </div>
+                        <div class="work-info">
+                            <h3>Structural Friction</h3>
+                            <p>Cast Iron, Weathered Timber, Architectural Frame (2025)</p>
+                        </div>
+                    </div>
+
+                    <!-- Showcase Item 3 (Time-Based Codec Fragment Placeholder) -->
+                    <div class="work-card" onclick="openProject('project3')">
+                        <div class="thumbnail-container">
+                            <img src="https://placehold.co/600x338/f7f7f7/888888?text=Compression+Artifacts+Render" alt="Compression Artifacts Screen Output Still">
+                            <div class="codec-tag">Moving Image</div>
+                        </div>
+                        <div class="work-info">
+
+                            <h3>Compression Artifacts & The Grid</h3>
+                            <p>Single Channel HD Video, H.264 Codec, 11'45" (2024)</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </section>
+
+            <!-- VIEW BLOCK 2: BIOGRAPHY & CURRICULUM VITAE -->
+            <section id="about" class="page-section">
+                <div class="about-layout">
+                    
+                    <!-- Conceptual Writing Framework Block -->
+                    <div class="about-left text-block">
+                        <h2>Artist Biography</h2>
+                        <p>AV.H.264 is a multimedia artist whose practice operates at the intersection of sculpture, moving image, and digital compression. Graduating with a Bachelor of Fine Arts, they are currently pursuing an MA at the Royal College of Art (RCA), London, where their research explores the friction between physical spatial boundaries and time-based digital frameworks.</p>
+                        <p>Operating between London and West Sussex, they use physical structures and digital media to investigate how space is captured, compressed, and mediated. Their work has been included in selected group exhibitions and showcases, including the RCA Work-in-Progress show, and they are currently developing new work exploring the textures of domestic restriction and temporal hiatus.</p>
+
+                        <h2 style="margin-top: 44px;">Artist Statement</h2>
+
+                        <p>My practice considers multimedia art an act of spatial and temporal translation. Blending heavy physical media—such as cast metals, stone, and industrial timber—with time-based digital formats, I examine how physical boundaries and digital codecs dictate human perception. The handle av.h.264 serves as a conceptual nod to this framework: a recognition of how raw, monumental physical reality becomes compressed, formatted, and transmitted through digital channels.</p>
+                        <p>Central to my work is the loop—both as a physical structural motif and a temporal cinematic device. I investigate the friction that occurs when permanent, unyielding industrial materials are paired with the transient, fleeting nature of moving images or soundscapes.</p>
+                        <p>During my current institutional intermission, my practice scales down into intensive digital spatial programming, high-definition video editing, and the production of modular maquettes. These works function as self-contained micro-environments that critique the boundaries of the domestic sphere. Whether manifesting as a massive physical installation or a highly compressed digital render, the objective remains constant: to expose the unseen weights, loops, and holds that govern our material and digital realities.</p>
+                    </div>
+                    
+                    <!-- Professional Academic History Column -->
+                    <div class="about-right">
+                        <div class="text-block">
+                            <h2>Curriculum Vitae</h2>
+                        </div>
+                        
+                        <div class="cv-section">
+                            <h3>Education</h3>
+                            <div class="cv-item">
+                                <div class="cv-date">2025–Pres.</div>
+                                <div class="cv-detail">
+                                    <h4>MA Sculpture & Multimedia</h4>
+                                    <p>Royal College of Art, London (Current Intermission)</p>
+                                </div>
+
+                            </div>
+                            <div class="cv-item">
+                                <div class="cv-date">2021–2024</div>
+                                <div class="cv-detail">
+                                    <h4>BA (Hons) Fine Art</h4>
+                                    <p>First Class Honours</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cv-section">
+                            <h3>Selected Exhibitions & Screenings</h3>
+                            <div class="cv-item">
+                                <div class="cv-date">2026</div>
+                                <div class="cv-detail">
+                                    <h4>Group Exhibition (Upcoming)</h4>
+                                    <p>Outside In x David Zwirner Gallery, London</p>
+                                </div>
+                            </div>
+
+                            <div class="cv-item">
+                                <div class="cv-date">2025</div>
+                                <div class="cv-detail">
+                                    <h4>RCA Work-in-Progress Show</h4>
+                                    <p>Battersea Studios, London</p>
+                                </div>
+                            </div>
+                            <div class="cv-item">
+                                <div class="cv-date">2024</div>
+                                <div class="cv-detail">
+                                    <h4>Degree Showcase</h4>
+                                    <p>Gallery 1, Main Campus</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cv-section">
+                            <h3>Awards & Funding</h3>
+                            <div class="cv-item">
+
+                                <div class="cv-date">2026</div>
+                                <div class="cv-detail">
+                                    <h4>Basic Income for the Arts Scheme</h4>
+                                    <p>Applicant / Pending Draw Cycle</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </section>
+
+            <!-- VIEW BLOCK 3: INFORMAL STUDIO NOTEBOOK STREAM -->
+            <section id="archive" class="page-section">
+                <div class="archive-grid">
+                    
+                    <div class="archive-item">
+                        <div class="archive-thumb">
+                            <img src="https://placehold.co/300x300/fcfcfc/aaaaaa?text=Render+Artifact+Test" alt="Studio test render fragment">
+
+                        </div>
+                        <div class="archive-meta">Notebook #012 — Render Artifact Test (August 2026)</div>
+                    </div>
+
+                    <div class="archive-item">
+                        <div class="archive-thumb">
+                            <img src="https://placehold.co/300x300/fcfcfc/aaaaaa?text=Maquette+Structural+Sketch" alt="Maquette geometry design drawing">
+                        </div>
+                        <div class="archive-meta">Notebook #011 — Miniature Spatial Layout drawing</div>
+                    </div>
+
+                    <div class="archive-item">
+                        <div class="archive-thumb">
+                            <img src="https://placehold.co/300x300/fcfcfc/aaaaaa?text=Plaster+Mold+Restriction" alt="Plaster mold setting test">
+                        </div>
+                        <div class="archive-meta">Notebook #010 — Plaster cast restriction test</div>
+                    </div>
+
+                    <div class="archive-item">
+
+                        <div class="archive-thumb">
+                            <img src="https://placehold.co/300x300/fcfcfc/aaaaaa?text=Audio+Frequency+Wave" alt="Audio loop wavelength screenshot">
+                        </div>
+                        <div class="archive-meta">Notebook #009 — Ambient hum audio frequency breakdown</div>
+                    </div>
+                    
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- PERSISTENT EXPANDED OVERLAY PANEL (MODAL WINDOW) -->
+    <div id="projectModal" class="modal">
+        <button class="close-btn" onclick="closeProject()">&times;</button>
+        <div class="modal-content">
+            <div id="modalMediaContainer" class="modal-media">
+                <!-- Data injection point for video embeds or deep detail photo lists -->
+            </div>
+
+            <div class="modal-text">
+                <h2 id="modalTitle">Project Title</h2>
+                <div id="modalMeta" class="modal-meta-info">Medium, Dimensions, Year</div>
+                <div id="modalDesc" class="modal-description">
+                    Project descriptive text text holder.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Client-Side Navigation Tabs & Dynamic Data Injection Logic -->
+    <script>
+        // Single-Page Routing System
+        function switchTab(event, tabId) {
+            // Hide all structural tabs
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(sec => sec.classList.remove('active'));
+            
+            // Unhighlight navigation nodes
+
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => link.classList.remove('active'));
+            
+            // Display active pane target
+            document.getElementById(tabId).classList.add('active');
+            
+            // Mark indicator active
+            event.target.classList.add('active');
+            
+            // Return screen safely to top anchor
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Project Archive Cache Structure
+        const projectData = {
+            project1: {
+                title: "Spatial Translation I",
+                meta: "Video Loop, Cast Resin, Spatial Sound Rig / Dimensions Variable / 2025",
+                desc: "<p>This entry serves as the primary visual showcase for video loops. To replace this with real time-based work later, swap this placeholder image block out with an ad-free <code>&lt;iframe&gt;</code> embed link generated inside your Vimeo Premium account dashboard.</p>",
+
+                media: '<img src="https://placehold.co/950x534/e8e8e8/555555?text=Vimeo+/+YouTube+Iframe+Embed+Placeholder" alt="Moving image presentation window">'
+            },
+            project2: {
+                title: "Structural Friction",
+                meta: "Cast Iron, Weathered Structural Timber, Architectural Clamps / 240cm x 110cm x 90cm / 2025",
+                desc: "<p>This entry documents fine-art object documentation. When you edit this code file locally, you can clear this image out and paste structural stacks of high-definition images showing varying camera focal lengths, material angles, and surface installation views.</p>",
+                media: '<img src="https://placehold.co/950x534/e8e8e8/555555?text=Physical+Installation+Detail+High-Res+Photo" alt="Sculpture documentation view">'
+            },
+            project3: {
+                title: "Compression Artifacts & The Grid",
+                meta: "Single Channel Ultra-HD Video, H.264 Codec, Stereo Audio / 11 Minutes 45 Seconds / 2024",
+                desc: "<p>An audio-visual research exploration tracking code breakdown loops and pixel degradation. When uploading your actual video file asset data, drop your native streaming link container source string inside this modal script object array.</p>",
+                media: '<img src="https://placehold.co/950x534/e8e8e8/555555?text=Time-Based+Media+Playback+Monitor" alt="Screening window video render">'
+            }
+        };
+
+        // Open Detailed Workspace Overlay View
+        function openProject(id) {
+            const data = projectData[id];
+
+            if (!data) return;
+
+            document.getElementById('modalTitle').innerText = data.title;
+            document.getElementById('modalMeta').innerText = data.meta;
+            document.getElementById('modalDesc').innerHTML = data.desc;
+            document.getElementById('modalMediaContainer').innerHTML = data.media;
+            
+            document.getElementById('projectModal').classList.add('active');
+            document.body.style.overflow = 'hidden'; // Stop window drift
+        }
+
+        // Close Workspace Overlay View
+        function closeProject() {
+            document.getElementById('projectModal').classList.remove('active');
+            document.getElementById('modalMediaContainer').innerHTML = ''; // Wipe video stream buffers instantly
+            document.body.style.overflow = 'auto'; // Re-enable screen wheel tracking
+        }
+    </script>
+</body>
+</html>
+
+
